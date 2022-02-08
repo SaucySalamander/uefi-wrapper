@@ -1,8 +1,6 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
+#![no_std]
+#![feature(abi_efiapi)]
+
+pub mod protocols;
+pub mod tables;
+pub mod data_types;
