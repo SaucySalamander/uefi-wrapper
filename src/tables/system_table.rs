@@ -4,22 +4,22 @@ use crate::protocols::simple_text_output::SimpleTextOutput;
 
 #[repr(C)]
 pub struct TableHeader {
-    signature: u64,
-    revision: u32,
-    header_size: u32,
-    crc32: u32,
-    reserved: u32,
+    pub signature: u64,
+    pub revision: u32,
+    pub header_size: u32,
+    pub crc32: u32,
+    pub reserved: u32,
 }
 
 #[repr(C)]
 pub struct SystemTable {
-    pub(crate) header: TableHeader,
-    pub(crate) firmware_vendor: *mut Char16,
-    pub(crate) firmware_revision: u32,
-    pub(crate) console_in_handle: Handle,
-    pub(crate) console_in: *mut SimpleTextInput,
-    pub(crate) console_out_handle: Handle,
-    pub(crate) console_out: *mut SimpleTextOutput,
+    pub header: TableHeader,
+    pub firmware_vendor: *mut Char16,
+    pub firmware_revision: u32,
+    pub console_in_handle: Handle,
+    pub console_in: *mut SimpleTextInput,
+    pub console_out_handle: Handle,
+    pub console_out: *mut SimpleTextOutput,
     //TODO - Fill out rest of struct
 
     // EFI_HANDLE StandardErrorHandle,

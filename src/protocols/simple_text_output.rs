@@ -18,14 +18,14 @@ pub struct SimpleTextOutput {
 }
 
 impl SimpleTextOutput {
-    pub(crate) fn output_string(&mut self, string: &Char16) -> Status {
+    pub fn output_string(&mut self, string: &Char16) -> Status {
         unsafe {
             (self.output_string)(self, string);
             Status::SUCCESS
         }
     }
 
-    pub(crate) fn clear_screen(&mut self) -> Status{
+    pub fn clear_screen(&mut self) -> Status{
         unsafe{(self.clear_screen)(self)}.into()
     }
 }
