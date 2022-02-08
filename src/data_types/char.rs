@@ -1,7 +1,7 @@
 use core::ffi::c_void;
 use core::ptr::NonNull;
 
-#[derive(Clone, Copy, Default, Eq, PartialEq, PartialOrd, Ord)]
+#[derive(Clone, Copy, Debug)]
 #[repr(transparent)]
 pub struct Char16(u16);
 
