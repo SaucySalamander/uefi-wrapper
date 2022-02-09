@@ -1,4 +1,7 @@
+use alloc::borrow::ToOwned;
+use core::borrow::BorrowMut;
 use crate::data_types::chars::{Char16, Status};
+use crate::data_types::strings::CString16;
 
 #[repr(C)]
 pub struct SimpleTextOutput {
@@ -18,9 +21,18 @@ pub struct SimpleTextOutput {
 }
 
 impl SimpleTextOutput {
-    pub fn output_string(&mut self, string: &Char16) -> Status {
+    pub fn output_char(&mut self, string: &Char16) -> Status {
         unsafe {
             (self.output_string)(self, string);
+            Status::SUCCESS
+        }
+    }
+
+    pub fn output_string(&mut self, string: &CString16) -> Status {
+        unsafe {
+            for char16 in string.to_owned().get_chars() {
+               (self.output_string)(self, char16);
+            }
             Status::SUCCESS
         }
     }

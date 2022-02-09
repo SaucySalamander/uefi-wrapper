@@ -6,6 +6,12 @@ use crate::data_types::chars::Char16;
 
 pub struct CString16(Vec<Char16>);
 
+impl CString16 {
+    pub fn get_chars(&self) -> &Vec<Char16> {
+        &self.0
+    }
+}
+
 impl TryFrom<String> for CString16 {
     type Error = ();
 
