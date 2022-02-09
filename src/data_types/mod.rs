@@ -1,1 +1,2 @@
-pub mod char;
+pub mod chars;
+pub mod strings;

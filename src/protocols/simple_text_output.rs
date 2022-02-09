@@ -1,4 +1,4 @@
-use crate::data_types::char::{Char16, Status};
+use crate::data_types::chars::{Char16, Status};
 
 #[repr(C)]
 pub struct SimpleTextOutput {
