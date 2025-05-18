@@ -33,10 +33,3 @@ impl TryFrom<char> for Char16 {
         }
     }
 }
-
-#[derive(Clone, Copy, Debug)]
-#[repr(C)]
-pub struct Handle(*mut c_void);
-
-
-

@@ -1,4 +1,5 @@
-use crate::data_types::chars::{Char16, Handle};
+use crate::data_types::chars::Char16;
+use crate::data_types::Handle;
 use crate::protocols::boot_services::BootServices;
 use crate::protocols::simple_text_input::SimpleTextInput;
 use crate::protocols::simple_text_output::SimpleTextOutput;
