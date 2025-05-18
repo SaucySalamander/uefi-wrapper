@@ -1,6 +1,5 @@
-use crate::data_types::strings::CString16;
+// use crate::data_types::strings::CString16;
 use crate::data_types::{chars::Char16, Status};
-use alloc::borrow::ToOwned;
 
 #[repr(C)]
 pub struct SimpleTextOutput {
@@ -35,17 +34,16 @@ impl SimpleTextOutput {
         }
     }
 
-    pub fn output_string(&mut self, string: &CString16) -> Status {
-        unsafe {
-            for char16 in string.to_owned().get_chars() {
-                (self.output_string)(self, char16);
-            }
-            Status::SUCCESS
-        }
-    }
+    // pub fn output_string(&mut self, string: &CString16) -> Status {
+    //     unsafe {
+    //         for char16 in string.to_owned().get_chars() {
+    //             (self.output_string)(self, char16);
+    //         }
+    //         Status::SUCCESS
+    //     }
+    // }
 
     pub fn clear_screen(&mut self) -> Status {
         unsafe { (self.clear_screen)(self) }.into()
     }
 }
-
