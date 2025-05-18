@@ -1,14 +1,21 @@
-use alloc::borrow::ToOwned;
-use core::borrow::BorrowMut;
-use crate::data_types::chars::{Char16, Status};
 use crate::data_types::strings::CString16;
+use crate::data_types::{chars::Char16, Status};
+use alloc::borrow::ToOwned;
 
 #[repr(C)]
 pub struct SimpleTextOutput {
-    reset: unsafe extern "efiapi" fn(this: &SimpleTextOutput, extended_verification: bool) -> Status,
-    output_string: unsafe extern "efiapi" fn(this: &SimpleTextOutput, output: *const Char16) -> Status,
-    test_string: unsafe extern "efiapi" fn(this: &SimpleTextOutput, output: *const Char16) -> Status,
-    query_mode: unsafe extern "efiapi" fn(this: &SimpleTextOutput, mode_number: usize, columns: *mut usize, rows: *mut usize) -> Status,
+    reset:
+        unsafe extern "efiapi" fn(this: &SimpleTextOutput, extended_verification: bool) -> Status,
+    output_string:
+        unsafe extern "efiapi" fn(this: &SimpleTextOutput, output: *const Char16) -> Status,
+    test_string:
+        unsafe extern "efiapi" fn(this: &SimpleTextOutput, output: *const Char16) -> Status,
+    query_mode: unsafe extern "efiapi" fn(
+        this: &SimpleTextOutput,
+        mode_number: usize,
+        columns: *mut usize,
+        rows: *mut usize,
+    ) -> Status,
     set_mode: unsafe extern "efiapi" fn(this: &SimpleTextOutput, mode_number: usize) -> Status,
     set_attribute: unsafe extern "efiapi" fn(this: &SimpleTextOutput, attribute: usize) -> Status,
     clear_screen: unsafe extern "efiapi" fn(*mut SimpleTextOutput) -> Status,
@@ -31,13 +38,14 @@ impl SimpleTextOutput {
     pub fn output_string(&mut self, string: &CString16) -> Status {
         unsafe {
             for char16 in string.to_owned().get_chars() {
-               (self.output_string)(self, char16);
+                (self.output_string)(self, char16);
             }
             Status::SUCCESS
         }
     }
 
-    pub fn clear_screen(&mut self) -> Status{
-        unsafe{(self.clear_screen)(self)}.into()
+    pub fn clear_screen(&mut self) -> Status {
+        unsafe { (self.clear_screen)(self) }.into()
     }
 }
+
