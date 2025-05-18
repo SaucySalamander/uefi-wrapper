@@ -1,4 +1,5 @@
 use crate::data_types::chars::{Char16, Handle};
+use crate::protocols::boot_services::BootServices;
 use crate::protocols::simple_text_input::SimpleTextInput;
 use crate::protocols::simple_text_output::SimpleTextOutput;
 
@@ -20,12 +21,12 @@ pub struct SystemTable {
     pub console_in: *mut SimpleTextInput,
     pub console_out_handle: Handle,
     pub console_out: *mut SimpleTextOutput,
+    pub boot_services: *mut BootServices,
     //TODO - Fill out rest of struct
 
     // EFI_HANDLE StandardErrorHandle,
     // EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL *StdErr,
     // EFI_RUNTIME_SERVICES *RuntimeServices,
-    // EFI_BOOT_SERVICES *BootServices,
     // UINTN NumberOfTableEntries,
     // EFI_CONFIGURATION_TABLE *ConfigurationTable,
 }
