@@ -38,9 +38,5 @@ impl TryFrom<char> for Char16 {
 #[repr(C)]
 pub struct Handle(*mut c_void);
 
-#[repr(C)]
-pub enum Status {
-    SUCCESS = 0,
-    FAILURE = 1,
-    //TODO add other error codes
-}
+
+
